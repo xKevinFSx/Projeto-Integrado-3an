@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/> 
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/css/font-awesome.min.css"/>
+		<link type="text/css" rel="stylesheet" href="/css/estilo.css"/>
+		<link rel="icon" th:href="@{~/imagens/logo.png}"/>
+        <title>Criar Noticia</title>
+    </head>
+    
+    <body>
+    
+        <!-- CABECARIO -->
+		<header id="header">
+			<!-- Nav -->
+			<div id="nav">
+				<!-- MENU SUPERIOR Nav -->
+				<div id="nav-fixed">
+					<div class="container">
+						<!-- TITULO -->
+						<div class="nav-logo">
+							<a href="/" class="logo">SOCIALMEDIA</a>
+						</div>
+						<!-- /TITULO -->
+
+						<!-- nav -->
+						<ul class="nav-menu nav navbar-nav">
+							<li><a href="#">Noticias</a></li>
+							<li><a href="#">Popular</a></li>
+							<li class="cat-1"><a href="#">Esportes</a></li>
+							<li class="cat-2"><a href="politica-cat.html">Politica</a></li>
+							<li class="cat-3"><a href="#">Tecnologia</a></li>
+							<li class="cat-4"><a href="">Jornal</a></li>
+						</ul>
+						<!-- /nav -->
+
+						<!-- BOTAO PESQUISA & TRANSIÇÃO -->
+						<div class="nav-btns">
+							<button class="aside-btn"><i class="fa fa-bars"></i></button>
+							<button class="search-btn"><i class="fa fa-search"></i></button>
+							<div class="search-form">
+								<input class="search-input" type="text" name="search" placeholder="Enter Your Search ..."/>
+								<button class="search-close"><i class="fa fa-times"></i></button>
+							</div>
+						</div>
+						<!-- /BOTAO PESQUISA & TRANSIÇÃO -->
+					</div>
+				</div>
+				<!-- /MENU SUPERIOR Nav -->
+
+				<!-- MENU LATERAL Nav -->
+				<div id="nav-aside">
+					<!-- nav -->
+					<div class="section-row">
+						<ul class="nav-aside-menu">
+							<li><a href="inicio.html">Inicio</a></li>
+							<li><a href="sobre-nos.html">Sobre Nós</a></li>
+							<li><a href="#">Crie sua noticia</a></li>
+							<li><a href="#">Faça upload de material</a></li>
+							<li><a href="login.html">Sair</a></li>
+						</ul>
+					</div>
+					<!-- /nav -->
+
+					<!-- MEDIAS SOCIAIS -->
+					<div class="section-row">
+						<h3>Siga-nos</h3>
+						<ul class="nav-aside-social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						</ul>
+					</div>
+					<!-- /MEDIAS SOCIAIS -->
+
+					<!-- FECHAR MENU LATERAL Nav -->
+					<button class="nav-aside-close"><i class="fa fa-times"></i></button>
+					<!-- /FECHAR MENU LATERAL Nav -->
+				</div>
+				<!-- MENU LATERAL Nav -->
+			</div>
+			<!-- /Nav -->
+		</header>
+		<!-- /CABECARIO -->
+        
+        <!-- CRIAÇÃO NOTICIA -->
+        <div id="noticia">
+            <form method="post" action="" onsubmit="Checkfiles(this)"><br/>
+                <h7>Criação de Noticia</h7>
+                
+                <fieldset>
+                    <legend>Informação inicial da noticia</legend>
+                        <p> 
+                            <label for="titulo_noticia">Titulo da Noticia</label><br/>
+                            <input id="titulo_noticia" name="titulo_noticia" size="35" required="required" type="text" placeholder="Titulo Principal da Noticia" />
+                        </p><br/>
+
+                        <p> 
+                            <label for="imagem_noticia">Imagem de Capa da Noticia</label>
+                            <input type="file" id="imagem_noticia" name="imagem_noticia" accept="image/*" multiple ="" required="required"/>
+                        </p>
+                </fieldset><br/>
+                
+                <fieldset>
+                        <legend>Conteudo da Noticia</legend>
+                    <p> 
+                        <label for="sub_titulo_noticia">Titulo da Noticia</label><br/>
+                         <strong><input id="sub_titulo_noticia" name="sub_titulo_noticia" size="35" required="required" type="text" placeholder="Sub Titulo da Noticia"/></strong>
+                    </p><br/>
+
+                    <p>
+                        <label for="categoria">Categoria da Noticia</label><br/>
+                        <input type="radio" name="esporte" value="Esporte"/>Esporte<br/>
+                        <input type="radio" name="politica" value="Politica"/> Politica<br/>
+                        <input type="radio" name="tecnologia" value="Tecnologia"/> Tecnologia<br/>
+                        <input type="radio" name="games" value="Jornal"/>Jornal<br/>
+                    </p><br/>
+
+                    <p> 
+                        <label for="descricao">Conteudo da Noticia</label><br/>
+                        <textarea rows="7" cols="70" maxlength="500" required="required" placeholder="Digite todo o conteudo textual da noticia"></textarea>
+                    </p><br/>
+
+                    <p> 
+                        <label for="imagem_noticia1">Imagem de Ilustração da Noticia</label>
+                        <input type="file" id="imagem_noticia1" name="imagem_noticia1" accept="image/*" multiple =""/>
+                    </p><br/>
+
+                    <p> 
+                        <label for="imagem_noticia1">Video de Ilustração da Noticia</label>
+                        <input type="file" id="imagem_noticia1" name="imagem_noticia1" accept="video/*" multiple ="" />
+                    </p><br/>
+
+                    <p> 
+                        <label for="tags">Tags da Noticia</label><br/>
+                        <input type="text" id="tags" name="tags" size="70" required="required" placeholder="Digite as tags relacionada com a noticia" />
+                    </p><br/>
+
+                    <p> 
+                        <label for="descricao_autor">Descrição do Autor</label><br/>
+                        <textarea rows="7" cols="70" maxlength="500" required="required" placeholder="Digite uma breve descrição de sua vida/experiencias pessoais"></textarea>
+                    </p>
+
+                    <div class="section-row">
+                        <button class="primary-button center block " id="botaoEnviar">Enviar</button>
+                    </div>
+
+                </fieldset>                
+            </form>
+        </div>
+        <!-- /CRIAÇÃO NOTICIA -->
+        
+        <!-- RODAPÉ -->
+		<footer id="footer">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-5">
+						<div class="footer-widget">
+							<div class="footer-logo">
+								<a href="inicio.html" class="logo">SOCIALMEDIA</a>
+							</div>
+
+							<div class="footer-copyright">
+								<span>&copy;Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados
+                                </span>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="footer-widget">
+									<h3 class="footer-title">Sobre Nós</h3>
+									<ul class="footer-links">
+										<li><a href="sobre-nos.html">Quem somos</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="footer-widget">
+									<h3 class="footer-title">Catagorias</h3>
+									<ul class="footer-links">
+										<li><a href="#">Esporte</a></li>
+										<li><a href="politica-cat.html">Politica</a></li>
+										<li><a href="">Tecnologia</a></li>
+										<li><a href="">Jornal</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="footer-widget">
+							<h3 class="footer-title">Receba nossas atualizações</h3>
+							<div class="footer-newsletter">
+								<form>
+									<input class="input" type="email" name="newsletter" placeholder="Digite seu e-mail"/>
+									<button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+								</form>
+							</div>
+							<ul class="footer-social">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</footer>
+		<!-- /RODAPÉ -->
+        
+        <script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+        <script src="js/criarNoticia.js"></script>
+        
+    </body>
+</html>

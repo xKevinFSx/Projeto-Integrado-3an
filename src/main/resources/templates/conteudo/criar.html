@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html 
+
+	xmlns="http://www.w3.org/1999/xhtml" 
+  	xmlns:th="http://www.thymeleaf.org" 
+  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+>
+
+	<div th:replace="layout/base :: head">...</div>
+	
+	<body>
+		<div th:replace="layout/base :: header">...</div>
+			
+		<th:block layout:fragment="conteudo">
+		  
+	        <form method="POST" action="criar">
+                
+                <fieldset>
+	                
+	                <legend>Informações</legend>
+	                
+	                <div class="box">
+	                	<div>Titulo:</div> 
+	                	<input type="text" name="titulo" placeholder="Digite o titulo do conteúdo">
+	                </div>
+	                
+	                <div class="box">
+	                	<div>Descrição:</div>
+	                	<textarea rows="5" cols="50" name="descricao" placeholder="Faça uma breve descrição"></textarea>
+	                </div>
+	                
+	        	</fieldset>
+                
+                <fieldset>
+	                
+	                <legend>Arquivos</legend>
+	                
+	                <div class="box">
+	                	<div class="caixa-lista-arquivo">
+		                	<ul class="list-group" th:each="itemMap : ${arquivosPorTipoDeArquivo}">
+								<li class="list-group-item disabled" aria-disabled="true">
+									<div th:text="${itemMap.key.descricao}"></div>
+								</li>
+								<li class="list-group-item" th:each="itemValue : ${itemMap.value}">
+									<p th:text="${itemValue.nome}"></p>
+									<input type="radio" name="arquivoId" th:value="${itemValue.id}">
+								</li>
+							</ul>
+		                </div>
+	                </div>
+	                
+	        	</fieldset>
+	        	
+	        	<fieldset>
+	                
+	                <legend>Editor</legend>
+	                
+	                <p>Use ##arquivo## e ##descricao## para indicar o local onde deve ser posicionado esses elementos.</p>
+	                
+	                <div class="box">
+	                	<textarea id="mytextarea" name="html" rows="20" cols="50" ></textarea>
+	                </div>
+	                
+	        	</fieldset>
+	        	
+	        	<fieldset>
+	                
+	                <legend>Catergorias</legend>
+	                
+	                <div class="box">
+	                	<div class="radio-box" th:each="item : ${categorias}">
+	                		<div class="text-radio" th:text="${item.descricao}"></div>
+	                		<input type="radio" name="categoriaId" th:value="${item.id}">
+		                </div>
+	                </div>
+	                
+	        	</fieldset>
+	        	
+	        	<fieldset>
+	                
+	                <legend>Tags</legend>
+	                
+	                <div class="box">
+	                	<div class="radio-box" th:each="item : ${tags}">
+	                		<div class="text-radio" th:text="${item.nomeTag}"></div>
+		                	<input type="checkbox" th:name="listaTagsId" th:value="${item.id}">
+		                </div>
+	                </div>
+	                
+	        	</fieldset>
+	        	
+	        	<fieldset>
+	                
+	                <legend>Tipo de acesso</legend>
+	                <div class="box">
+	                	<div class="radio-box">
+	                		<div class="text-radio" >Publico</div>
+	                		<input type="radio" name="tipoAcesso" value="True"> 
+	                		
+	                		<div class="text-radio" >privado</div>
+	                		<input type="radio" name="tipoAcesso" value="False"> 
+	                	</div>
+	                </div>
+	                
+	        	</fieldset>
+	        	
+	        	<fieldset>
+	                
+	                <legend>Confirmação</legend>
+	                
+	                <div class="box">
+		                <button type="submit" class="btn btn-primary">Criar</button>
+		                <button type="button" class="btn btn-danger">Cancelar</button>
+	                </div>
+	                
+	        	</fieldset>
+	        </form>
+		
+		</th:block>
+	
+		<div th:replace="layout/base :: footer">...</div>
+	</body>
+
+</html>

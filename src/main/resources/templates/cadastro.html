@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/login.css"/>
+        <link rel="icon" th:href="@{~/imagens/logo.png}"/>
+        <title>Login</title>
+    </head>
+
+    <body style="overflow-x: hidden; overflow-y: hidden;">
+        <div class="container" >
+            <div class="content">
+                <!--FORMULÁRIO DE CADASTRO-->
+                <div id="cadastro">
+                    <form action="#" th:action="@{/fazerCadastro}" th:object="${usuario}" method="post" autocomplete="off">
+                        <h1>Cadastro</h1>
+                        <p>
+                            <label for="usuario_cad">Usuario</label>
+                            <input id="usuario_cad" name="usuario_cad" required="required" placeholder="usuario" th:field="*{login}"/>
+                        </p>
+
+                        <p>
+                            <label for="senha_cad">Senha</label>
+                            <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="senha" th:field="*{senha}"/>
+                            <span th:if="${erroCadastro != null}" style="color:red">
+                                usuario já cadastrado
+                            </span>
+                        </p>
+
+                        <p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <label for="admin">
+                                        <input id="admin" type="radio" name="permissao" value="administrador"/>
+                                        Admin
+                                    </label>
+                                </div>
+                                <div class="col-md-1">
+                                    <label for="usuario">
+                                        <input id="usuario" type="radio" checked="checked" name="permissao" value="usuario"/>
+                                        User
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="estagiario">
+                                        <input id="estagiario" type="radio" checked="checked" name="permissao" value="estagiario"/>
+                                        Estagiario
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            <input type="submit" name="cadastrar" value="Cadastrar"/>
+                        </p>
+                        <p class="link">
+                            Já tem conta?
+                            <a href="/login">Ir para Login</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

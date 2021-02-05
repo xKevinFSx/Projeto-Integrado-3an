@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html 
+
+	xmlns="http://www.w3.org/1999/xhtml" 
+  	xmlns:th="http://www.thymeleaf.org" 
+  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+>
+
+	<div th:replace="layout/base :: head">...</div>
+	
+	<body>
+		<div th:replace="layout/base :: header">...</div>
+			
+		<th:block layout:fragment="conteudo">
+			<fieldset>
+				<legend th:text="${titulo}"></legend>
+				<div class="preview">
+					<div th:utext="${html}" ></div>
+				</div>
+			</fieldset>
+		</th:block>
+
+		<div th:replace="layout/base :: footer">...</div>
+	</body>
+
+</html>

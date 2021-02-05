@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html 
+
+	xmlns="http://www.w3.org/1999/xhtml" 
+  	xmlns:th="http://www.thymeleaf.org" 
+  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+>
+
+	<div th:replace="layout/base :: head">...</div>
+	
+	<body>
+		<div th:replace="layout/base :: header">...</div>
+			
+		<th:block layout:fragment="conteudo">
+	        <div>
+                <fieldset>
+	                <legend>Upload de Arquivos</legend>
+                    <form method="POST" enctype="multipart/form-data" action="upload">
+						
+						<div class="box">
+							<input type="file" name="file" />
+						</div>
+						
+						<div class="box">
+							<input type="submit" value="Upload" />
+						</div>
+						
+					</form>
+	        	</fieldset>
+	        	<fieldset>
+	                <legend>Registrar uma Transmissão ao vivo</legend>
+                    <form method="POST" action="registrar">
+						
+						<div class="box">
+							Nome: <input type="text" name="nome" />
+						</div>
+						<div class="box">
+							Link: <input type="text" name="link" />
+						</div>
+						
+						<div class="box">
+							<input type="submit" value="Registrar" />
+						</div>
+						
+					</form>
+	        	</fieldset>
+	        </div>
+		
+		</th:block>
+	
+		<div th:replace="layout/base :: footer">...</div>
+	</body>
+
+</html>

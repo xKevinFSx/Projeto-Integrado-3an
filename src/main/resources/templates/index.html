@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:background="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<!--	<link type="text/css" rel="stylesheet" th:href="@{css/style.css}"/>-->
+	<!--	<link type="text/css" rel="stylesheet" th:href="@{css/Pag-Inicial.css}"/>-->
+	<!--	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/>-->
+	<link rel="icon" th:href="@{~/imagens/logo.png}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/estilo.css}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+	<script src="https://ajax.googleapis.com/ajax/libsx-frame/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#locales").change(function() {
+				var selectedOption = $('#locales').val();
+				if (selectedOption !== '') {
+					window.location.replace('home?lang=' + selectedOption);
+				}
+			});
+		});
+	</script>
+	
+	<title>Media Center</title>
+</head>
+
+<body>
+	<!-- CABECARIO -->
+	<header id="header">
+		<!-- Nav -->
+		<div id="nav">
+			<!-- MENU SUPERIOR Nav -->
+			<div id="nav-fixed">
+				<div class="container">
+					<!-- TITULO -->
+					<div class="nav-logo">
+						<a href="/" class="logo">SOCIAL MEDIA</a>
+					</div>
+					<!-- /TITULO -->
+	
+<!--					&lt;!&ndash; nav &ndash;&gt;-->
+<!--					<ul class="nav-menu nav navbar-nav">-->
+<!--						<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">-->
+<!--                                <a href="#" th:href="@{/home/busca_categoria/{categoria}(categoria=${categoria.getDescricao()})}"-->
+<!--                                   th:text="#{*{categoria.getDescricao()}}"></a>-->
+<!--						</li>-->
+<!--					</ul>-->
+<!--					&lt;!&ndash; /nav &ndash;&gt;-->
+
+					<div class="nav-btns">
+						<button class="aside-btn">
+							<i class="fa fa-bars"></i>
+						</button>
+						<button class="search-btn">
+							<i class="fa fa-search"></i>
+						</button>
+						<div class="search-form">
+							<form name="busca_descricao" action="/conteudo/busca_descricao/" method="post">
+								<div class="search-form">
+									<input class="search-input" type="text" name="descricao"
+										   th:placeholder="#{digite-pesquisa}"/>
+									<button class="search-close">
+										<input class="search-close" type="submit" th:value="#{buscar}">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+								<input type="submit">
+							</form>
+							<button class="search-close">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
+					</div>
+					<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
+				</div>
+			</div>
+			<!-- /MENU SEPERIOR Nav -->
+	
+			<!-- MENU LATERAL Nav -->
+			<div id="nav-aside">
+				<!-- nav -->
+				<div class="section-row">
+					<ul class="nav-aside-menu">
+						<li><a th:href="@{/index}" th:text="#{inicio}"></a></li>
+						<li><a th:text="#{sobre-nos}"></a></li>
+						<li><a th:href="@{/conteudo/criar}" th:text="#{crie-sua-noticia}"></a></li>
+						<li><a th:href="@{/arquivo/upload}"
+							   th:text="#{faca-upload-de-material}"></a></li>
+						<li><a th:href="@{/tag}" th:text="#{cadastrar-tags}"></a></li>
+						<li><a th:href="@{/categoria}" th:text="#{cadastrar-categorias}"></a></li>
+						<li><a th:href="@{/login}" th:text="#{fazer-login}"></a></li>
+						<li><a th:href="@{/login}" th:text="#{sair}"></a></li>
+					</ul>
+				</div>
+				<!-- /nav -->
+	
+				<!-- MEDIA SOCIAS -->
+				<div class="section-row">
+					<h3><span th:text="#{lang.esc}"></span>:</h3>
+					<ul>
+						<li><a href="http://localhost:8080/home?lang=pt"><img alt="" src="/imagens/portugues.png" class="icon-ling"></a> português</li>
+						<li><a href="http://localhost:8080/home?lang=es"><img alt="" src="/imagens/spanish.png" class="icon-ling"></a> spanish</li>
+						<li><a href="http://localhost:8080/home?lang=en"><img alt="" src="/imagens/english.png" class="icon-ling"></a> english</li>
+					</ul>
+				</div>
+				<!-- /MEDIA SOCIAS -->
+	
+				<!-- FECHAR MENU LATERAL Nav -->
+				<button class="nav-aside-close">
+					<i class="fa fa-times"></i>
+				</button>
+				<!-- FECHAR MENU LATERAL Nav -->
+			</div>
+			<!-- /MENU LATEAL Nav -->
+		</div>
+		<!-- /Nav -->
+	</header>
+	<!-- /CABECARIO -->
+	
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- NOTICIA PRINCIAPAL1 -->
+<!--				<div class="col-md-6">-->
+<!--					<div class="post post-thumb">-->
+<!--						<a class="post-img" href="detalhes-noticias.html">-->
+<!--                            <img src="/imagens/1.png"></a>-->
+<!--						<div class="post-body">-->
+<!--							<h3 class="post-title">-->
+<!--								<a th:text="#{noticias-recentes}"></a>-->
+<!--							</h3>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				&lt;!&ndash; /NOTICIA PRINCIAPAL1 &ndash;&gt;-->
+<!--	-->
+<!--				&lt;!&ndash; NOTICIA PRINCIAPAL2 &ndash;&gt;-->
+<!--				<div class="col-md-6">-->
+<!--					<div class="post post-thumb">-->
+<!--						<a class="post-img" href="detalhes-noticias.html">-->
+<!--							<img src="/imagens/1.png">-->
+<!--						</a>-->
+<!--						<div class="post-body">-->
+<!--							<h3 class="post-title">-->
+<!--								<a th:text="#{bem-avaliados}"></a>-->
+<!--							</h3>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+				<!-- /NOTICIA PRINCIAPAL2 -->
+			</div>
+			<!-- /row -->
+	
+			<!-- section -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="section-title">
+										<h2 th:text="#{noticias-recentes}" ></h2>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div th:each="conteudo : ${conteudos}" class="caixa-conteudo">
+
+										<div class="conteudo-arquivo">
+											<div th:utext="*{conteudo.getHtml()}"></div>
+											<div th:utext="*{conteudo.getTags()}"></div>
+<!--											<div class="adiconar-tag">-->
+<!--												<a th:href="@{/tag}" type="button" class="btn btn-primary">adicionar tag</a>-->
+<!--											</div>-->
+										</div>
+
+										<div>
+											<a id="like" th:href="@{/conteudo/feedback/like/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-up fa-1x"></i></a>
+											<a th:text="*{conteudo.getLike()}"></a>
+											<a id="dislike" th:href="@{/conteudo/feedback/dislike/{conteudoId}(conteudoId=${conteudo.getId()})}"><i class="fas fa-thumbs-down fa-1x"></i></a>
+											<a th:text="*{conteudo.getDislike()}"></a>
+										</div>
+									</div>
+								</div>
+
+<!--								<div class="col-md-12">-->
+<!--									<div class="section-row">-->
+<!--										<button class="primary-button center-block" th:text="#{ver-mais}"></button>-->
+<!--									</div>-->
+<!--								</div>-->
+							</div>
+						</div>
+	
+						<div class="col-md-4">
+
+							<!-- CATEGORIAS SUBMENU -->
+							<div class="aside-widget">
+								<div class="section-title">
+									<h2 th:text="#{categorias}"></h2>
+								</div>
+								<div class="category-widget">
+									<ul>
+										<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">
+				                                <a href="#" th:href="@{/conteudo/busca_categoria/{categoria}(categoria=${categoria.getDescricao()})}"
+				                                   th:text="#{*{categoria.getDescricao()}}"></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /CATEGORIAS SUBMENU -->
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /section -->
+	
+	
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+	
+	
+	
+	
+	
+	<!-- RODAPÉ -->
+	<footer id="footer">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-5">
+					<div class="footer-widget">
+						<div class="footer-logo">
+							<a href="index.html" class="logo">SOCIALMEDIA</a>
+						</div>
+	
+						<div class="footer-copyright" th:text="#{todos-os-direitos-reservados}">
+							<span>&copy;Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+
+							</span>
+						</div>
+					</div>
+				</div>
+	
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="footer-widget">
+								<h3 class="footer-title" th:text="#{sobre-nos}"></h3>
+								<ul class="footer-links">
+									<li><a href="sobre-nos.html" th:text="#{quem-somos}"></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="footer-widget">
+								<h3 class="footer-title" th:text="#{categorias}"></h3>
+								<ul class="footer-links">
+									<li><a href="#" th:text="#{esportes}"></a></li>
+									<li><a href="#" th:text="#{politica}"></a></li>
+									<li><a href="#" th:text="#{tecnologia}"></a></li>
+									<li><a href="#" th:text="#{jornal}"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<div class="col-md-3"><meta charset="utf-8" />
+			    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			    <meta name="viewport" content="width=device-width, initial-scale=1" />
+			    <meta name="viewport" content="width=device-width, user-scalable=no" />
+			    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+						rel="stylesheet" />
+			    <link href="/css/style.css" rel="stylesheet" />
+			    <link href="css/Pag-Inicial.css" rel="stylesheet" />
+			    <link
+						href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600"
+						rel="stylesheet" />
+			    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+			    <link rel="stylesheet" href="css/font-awesome.min.css" />
+			    <link type="text/css" rel="stylesheet" href="/css/estilo.css" />
+
+					<div class="footer-widget">
+						<h3 class="footer-title" th:text="#{receba-nossas-atualizacoes}"></h3>
+						<div class="footer-newsletter">
+							<form>
+								<input class="input" type="email" name="newsletter"
+									th:placeholder="#{digite-email}">
+								<button class="newsletter-btn">
+									<i class="fa fa-paper-plane"></i>
+								</button>
+							</form>
+						</div>
+						<ul class="footer-social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						</ul>
+					</div>
+				</div>
+	
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</footer>
+	<!-- /RODAPÉ -->
+	
+	<script th:src="@{~/js/jquery.min.js}"></script>
+	<script th:src="@{~/js/bootstrap.min.js}"></script>
+	<script th:src="@{~/js/main.js}"></script>
+<!--	-->
+</body>
+</html>

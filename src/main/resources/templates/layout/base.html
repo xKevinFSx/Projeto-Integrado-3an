@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <title>Media Center</title>
+		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=rficbx1xu9hgmg4edb9i3qwjwuakiwqbmoufhkibrzj5u02b"></script>
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/> 
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<link type="text/css" rel="stylesheet" href="../css/estilo.css"/>
+		<script type="text/javascript" src="static/js/tinymce/tinymce.js"></script>
+		<script type="text/javascript" src="static/js/tinymce/jquery.tinymce.min.js"></script>
+		<script>
+			tinymce.init({
+				selector: '#mytextarea'
+			});
+		</script>
+<!--		<script type="text/javascript">-->
+<!--			$(document).ready(function() {-->
+<!--				$("#locales").change(function() {-->
+<!--					var selectedOption = $('#locales').val();-->
+<!--					if (selectedOption !== '') {-->
+<!--						window.location.replace('home?lang=' + selectedOption);-->
+<!--					}-->
+<!--				});-->
+<!--			});-->
+<!--		</script>-->
+    </head>
+    
+    <body>
+    
+        <!-- CABECARIO -->
+		<header id="header">
+			<!-- Nav -->
+			<div id="nav">
+				<!-- MENU SUPERIOR Nav -->
+				<div id="nav-fixed">
+					<div class="container">
+						<!-- TITULO -->
+						<div class="nav-logo">
+							<a href="/" class="logo">SOCIALMEDIA</a>
+						</div>
+						<!-- /TITULO -->
+
+						<!-- nav -->
+						<ul class="nav-menu nav navbar-nav">
+							<li><a href="http://localhost:8080/arquivo/upload">Upload</a></li>
+							<li><a href="http://localhost:8080/conteudo/criar">Criar Conteudo</a></li>
+						</ul>
+						<!-- /nav -->
+
+						<!-- BOTAO PESQUISA & TRANSIÇÃO -->
+						<div class="nav-btns">
+							<button class="aside-btn"><i class="fa fa-bars"></i></button>
+							<button class="search-btn"><i class="fa fa-search"></i></button>
+							<div class="search-form">
+								<input class="search-input" type="text" name="search" placeholder="Enter Your Search ..."/>
+								<button class="search-close"><i class="fa fa-times"></i></button>
+							</div>
+						</div>
+						<!-- /BOTAO PESQUISA & TRANSIÇÃO -->
+					</div>
+				</div>
+				<!-- /MENU SUPERIOR Nav -->
+
+				<!-- MENU LATERAL Nav -->
+				<div id="nav-aside">
+					<!-- nav -->
+					<div class="section-row">
+						<ul class="nav-aside-menu">
+							<li><a href="index.html" th:text="#{inicio}"></a></li>
+							<li><a th:text="#{sobre-nos}"></a></li>
+							<li><a th:href="@{/conteudo/criar}" th:text="#{crie-sua-noticia}"></a></li>
+							<li><a th:href="@{/arquivo/upload}"
+								   th:text="#{faca-upload-de-material}"></a></li>
+							<li><a th:href="@{/login}" th:text="#{fazer-login}"></a></li>
+							<li><a th:href="@{/login}" th:text="#{sair}"></a></li>
+						</ul>
+					</div>
+					<!-- /nav -->
+
+					<!-- MEDIA SOCIAS -->
+					<div class="section-row">
+						<h3><span th:text="#{lang.esc}"></span>:</h3>
+						<ul>
+							<li><a href="http://localhost:8080/home?lang=pt"><img alt="" src="/imagens/portugues.png" class="icon-ling"></a> português</li>
+							<li><a href="http://localhost:8080/home?lang=es"><img alt="" src="/imagens/spanish.png" class="icon-ling"></a> spanish</li>
+							<li><a href="http://localhost:8080/home?lang=en"><img alt="" src="/imagens/english.png" class="icon-ling"></a> english</li>
+						</ul>
+					</div>
+					<!-- /MEDIA SOCIAS -->
+
+					<!-- FECHAR MENU LATERAL Nav -->
+					<button class="nav-aside-close">
+						<i class="fa fa-times"></i>
+					</button>
+					<!-- FECHAR MENU LATERAL Nav -->
+				</div>
+				<!-- MENU LATERAL Nav -->
+			</div>
+			<!-- /Nav -->
+		</header>
+		<!-- /CABECARIO -->
+               
+        <th:block layout:fragment="conteudo">
+        </th:block>
+               
+        <!-- RODAPÉ -->
+		<footer id="footer">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-5">
+						<div class="footer-widget">
+							<div class="footer-logo">
+								<a href="inicio.html" class="logo">SOCIALMEDIA</a>
+							</div>
+
+							<div class="footer-copyright">
+								<span>&copy;Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados
+                                </span>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="footer-widget">
+									<h3 class="footer-title">Sobre Nós</h3>
+									<ul class="footer-links">
+										<li><a href="sobre-nos.html">Quem somos</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="footer-widget">
+									<h3 class="footer-title">Catagorias</h3>
+									<ul class="footer-links">
+										<li><a href="#">Esporte</a></li>
+										<li><a href="politica-cat.html">Politica</a></li>
+										<li><a href="">Tecnologia</a></li>
+										<li><a href="">Jornal</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="footer-widget">
+							<h3 class="footer-title">Receba nossas atualizações</h3>
+							<div class="footer-newsletter">
+								<form>
+									<input class="input" type="email" name="newsletter" placeholder="Digite seu e-mail"/>
+									<button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+								</form>
+							</div>
+							<ul class="footer-social">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</footer>
+		<!-- /RODAPÉ -->
+        
+        <script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/main.js"></script>
+        <script src="../js/criarNoticia.js"></script>
+        
+    </body>
+</html>
